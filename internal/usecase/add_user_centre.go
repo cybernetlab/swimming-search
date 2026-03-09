@@ -14,14 +14,14 @@ func (u *UseCase) AddUserCentre(ctx context.Context, input dto.AddUserCentreInpu
 	if idx >= 0 {
 		return nil, domain.NewErrAlreadyExists("centre")
 	}
-	centres, err := u.store.GetCentres(ctx)
+	centres, err := u.GetCentres(ctx)
 	idx = slices.IndexFunc(centres, func(c domain.Centre) bool { return c.ID == input.CentreID })
 	if idx < 0 {
 		return nil, domain.ErrNotFound
 	}
 	input.User.CentreIDs = append(input.User.CentreIDs, input.CentreID)
 	if err != nil {
-		return nil, fmt.Errorf("u.store.GetCentres: %w", err)
+		return nil, fmt.Errorf("u.GetCentres: %w", err)
 	}
 	err = u.store.PutUser(ctx, *input.User)
 	if err != nil {

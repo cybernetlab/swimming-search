@@ -15,9 +15,9 @@ func (u *UseCase) DeleteUserCentre(ctx context.Context, input dto.DeleteUserCent
 		return nil, domain.ErrNotFound
 	}
 	input.User.CentreIDs = slices.Delete(input.User.CentreIDs, idx, idx+1)
-	centres, err := u.store.GetCentres(ctx)
+	centres, err := u.GetCentres(ctx)
 	if err != nil {
-		return nil, fmt.Errorf("u.store.GetCentres: %w", err)
+		return nil, fmt.Errorf("u.GetCentres: %w", err)
 	}
 	err = u.store.PutUser(ctx, *input.User)
 	if err != nil {

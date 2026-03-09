@@ -12,10 +12,8 @@ import (
 	"github.com/cybernetlab/course-progress/pkg/otel"
 )
 
-var version = "dev"
-
 func main() {
-	c, err := config.New(version)
+	c, err := config.New()
 	if err != nil {
 		log.Fatal().Err(err).Msg("config.New")
 	}

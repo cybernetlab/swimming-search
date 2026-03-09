@@ -8,9 +8,9 @@ import (
 )
 
 func (u *UseCase) GetUserCentres(ctx context.Context, input dto.GetUserCentresInput) (dto.GetCentresOutput, error) {
-	centres, err := u.store.GetCentres(ctx)
+	centres, err := u.GetCentres(ctx)
 	if err != nil {
-		return nil, fmt.Errorf("u.store.GetCentres: %w", err)
+		return nil, fmt.Errorf("u.GetCentres: %w", err)
 	}
 	return collectCentres(input.User.CentreIDs, centres), nil
 }

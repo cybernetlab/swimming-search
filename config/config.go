@@ -17,7 +17,7 @@ import (
 
 type App struct {
 	Name      string `envconfig:"APP_NAME"    required:"true"`
-	Version   string `envconfig:"APP_VERSION"`
+	Version   string `envconfig:"APP_VERSION" required:"true"`
 	NodeID    string `envconfig:"NODE_ID"     required:"true"`
 	AdminUser string `envconfig:"ADMIN_USER"`
 }
@@ -32,7 +32,7 @@ type Config struct {
 	OTEL    otel.Config
 }
 
-func New(defaultVersion string) (Config, error) {
+func New() (Config, error) {
 	var config Config
 
 	_, err := os.Stat(".env")
@@ -46,10 +46,6 @@ func New(defaultVersion string) (Config, error) {
 	err = envconfig.Process("", &config)
 	if err != nil {
 		return config, fmt.Errorf("envconfig.Process: %w", err)
-	}
-
-	if config.App.Version == "" {
-		config.App.Version = defaultVersion
 	}
 
 	return config, nil
