@@ -1,0 +1,16 @@
+[
+  {
+    "NameQuery": "search-1",
+    "Days": [1],
+    "CentreIDs": [10],
+    "UserName": "testuser-1",
+    "ChatID": 1000
+  },
+  {
+    "NameQuery": "search-2",
+    "Days": [2],
+    "CentreIDs": [3],
+    "UserName": "testuser-2",
+    "ChatID": 2000
+  }
+]

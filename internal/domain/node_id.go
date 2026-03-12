@@ -6,12 +6,10 @@ import (
 
 type NodeID string
 
-type nodeIDKeyType int
-
-var nodeIDKey nodeIDKeyType
+type nodeIDKey struct{}
 
 func ContextNodeID(ctx context.Context) (NodeID, error) {
-	id, ok := ctx.Value(nodeIDKey).(NodeID)
+	id, ok := ctx.Value(nodeIDKey{}).(NodeID)
 	if !ok {
 		return "", NewErrInvalidContext("nodeID")
 	}
@@ -19,5 +17,5 @@ func ContextNodeID(ctx context.Context) (NodeID, error) {
 }
 
 func WithNodeID(ctx context.Context, id NodeID) context.Context {
-	return context.WithValue(ctx, nodeIDKey, id)
+	return context.WithValue(ctx, nodeIDKey{}, id)
 }

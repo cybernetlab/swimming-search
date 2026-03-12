@@ -5,11 +5,11 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/cybernetlab/course-progress/config"
-	"github.com/cybernetlab/course-progress/internal/app"
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/pkg/logger"
-	"github.com/cybernetlab/course-progress/pkg/otel"
+	"github.com/cybernetlab/swimming-search/config"
+	"github.com/cybernetlab/swimming-search/internal/app"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/pkg/logger"
+	"github.com/cybernetlab/swimming-search/pkg/otel"
 )
 
 func main() {

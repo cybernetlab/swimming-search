@@ -3,7 +3,7 @@ package otel
 import (
 	"context"
 
-	"github.com/cybernetlab/course-progress/pkg/otel/tracer"
+	"github.com/cybernetlab/swimming-search/pkg/otel/tracer"
 	"github.com/rs/zerolog/log"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/propagation"
@@ -28,8 +28,7 @@ var shutdownTracing func(ctx context.Context) error //nolint:gochecknoglobals
 func SilentModeInit() {
 	otel.SetTracerProvider(tracer_noop.NewTracerProvider())
 	tracer.Init(otel.Tracer(""))
-
-	log.Info().Msg("otel: Tracer is disabled")
+	// log.Info().Msg("otel: Tracer is disabled")
 }
 
 func Init(ctx context.Context, c Config) error {

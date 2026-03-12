@@ -12,7 +12,7 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/domain"
 )
 
 type Config struct {
@@ -43,15 +43,28 @@ func New(config Config) *Booking {
 	return &Booking{config: config}
 }
 
-func (b *Booking) GetCentres(_ctx context.Context) ([]domain.Centre, error) {
+func (b *Booking) GetCentres(ctx context.Context) ([]domain.Centre, error) {
 	url := fmt.Sprintf("%s/findLocation", b.config.BaseURL)
 
-	result, err := fetch[CentreResult](url)
-	if err != nil {
-		return nil, fmt.Errorf("fetch[CentreResult](%s): %w", url, err)
-	}
+	ctx, cancel := context.WithCancelCause(ctx)
+	timer := time.AfterFunc(5*time.Second, func() { cancel(context.DeadlineExceeded) })
+	defer timer.Stop()
+	out := make(chan []domain.Centre)
 
-	return result.Centres, nil
+	go func() {
+		result, err := fetch[CentreResult](url)
+		if err != nil {
+			cancel(fmt.Errorf("fetch[CentreResult](%s): %w", url, err))
+		}
+		out <- result.Centres
+	}()
+
+	select {
+	case centres := <-out:
+		return centres, nil
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	}
 }
 
 func (b *Booking) StartSearchCourses(ctx context.Context, search domain.Search, out chan<- domain.Course) {

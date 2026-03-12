@@ -7,15 +7,16 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
-	"github.com/cybernetlab/course-progress/internal/usecase"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/usecase"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 )
 
 type Config struct {
 	Token string `envconfig:"BOT_TOKEN" required:"true"`
 	Debug bool   `envconfig:"BOT_DEBUG" default:"false"`
+	URL   string
 }
 
 type Bot struct {
@@ -26,7 +27,14 @@ type Bot struct {
 type CommandHandler func(*usecase.UseCase, *Command)
 
 func New(c Config, handler CommandHandler) (*Bot, error) {
-	botAPI, err := tgbotapi.NewBotAPI(c.Token)
+	var botAPI *tgbotapi.BotAPI
+	var err error
+
+	if c.URL != "" {
+		botAPI, err = tgbotapi.NewBotAPIWithAPIEndpoint(c.Token, c.URL)
+	} else {
+		botAPI, err = tgbotapi.NewBotAPI(c.Token)
+	}
 	if err != nil {
 		return &Bot{}, fmt.Errorf("tgbotapi.NewBotAPI: %w", err)
 	}

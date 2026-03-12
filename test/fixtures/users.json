@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "testuser3",
+    "IsAdmin": true,
+    "CentreIDs": [5]
+  },
+  {
+    "Name": "testuser1",
+    "IsAdmin": false,
+    "CentreIDs": [3, 10]
+  },
+  {
+    "Name": "testuser2",
+    "IsAdmin": true,
+    "CentreIDs": [1]
+  },
+  {
+    "Name": "testuser4",
+    "IsAdmin": false,
+    "CentreIDs": [2]
+  }
+]

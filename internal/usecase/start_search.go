@@ -6,8 +6,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
 	"github.com/rs/zerolog/log"
 )
 
@@ -20,14 +20,14 @@ func (u *UseCase) StartSearch(ctx context.Context, input dto.StartSearchInput) e
 	if len(input.CentreIDs) == 0 {
 		return domain.ErrEmptyCentreIDs
 	}
-	err := u.store.PutSearch(ctx, input.Search)
+	err := u.store.PutSearch(ctx, *input.Search)
 	if err != nil {
 		return fmt.Errorf("u.store.PutSearch: %w", err)
 	}
 
 	searchCtx, cancel := context.WithCancel(ctx)
 	input.Search.Cancel = cancel
-	u.searches = append(u.searches, input.Search)
+	u.searches = append(u.searches, *input.Search)
 	context.AfterFunc(searchCtx, func() {
 		for i, search := range u.searches {
 			if search.UserName == input.UserName {
@@ -44,26 +44,37 @@ func (u *UseCase) StartSearch(ctx context.Context, input dto.StartSearchInput) e
 	courses := make(chan domain.Course, 10)
 	go func() {
 		for {
-			course, ok := <-courses
-			if !ok {
+			select {
+			case <-ctx.Done():
 				cancel()
 				return
-			}
-			msg := fmt.Sprintf("Course found: %s", courseToString(course))
-			err := u.bot.Send(ctx, msg)
-			if err != nil {
-				log.Error().Err(err).Msg("u.bot.Send")
+			case course, ok := <-courses:
+				if !ok {
+					cancel()
+					return
+				}
+				msg := fmt.Sprintf("Course found: %s", courseToString(course))
+				err := u.bot.Send(ctx, msg)
+				if err != nil {
+					log.Error().Err(err).Msg("u.bot.Send")
+				}
 			}
 		}
 	}()
 
-	u.booking.StartSearchCourses(ctx, input.Search, courses)
+	u.booking.StartSearchCourses(ctx, *input.Search, courses)
 	return nil
 }
 
 func courseToString(c domain.Course) string {
 	sched := schedToString(c.Schedule)
-	return fmt.Sprintf("<b>'%s'</b> on %s, spaces left: <b>%d</b>", c.Name, sched, c.Availability.Spaces.Free)
+	return fmt.Sprintf(
+		"<b>'%s'</b> on %s in <b>%s</b>, spaces left: <b>%d</b>",
+		c.Name,
+		sched,
+		c.Centre.Name,
+		c.Availability.Spaces.Free,
+	)
 }
 
 func schedToString(s domain.CourseSchedule) string {

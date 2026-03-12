@@ -5,16 +5,16 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/cybernetlab/course-progress/internal/controller/bot"
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
-	"github.com/cybernetlab/course-progress/internal/usecase"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/usecase"
 )
 
 func users(uc *usecase.UseCase, cmd *bot.Command) {
 	// get current user
 	user, err := cmd.User()
-	if err != nil || !user.Authorize("users:create") {
+	if err != nil || !user.Authorize("user:create") {
 		cmd.Error("You are not authorized for this command", err, "cmd.User")
 	}
 	if cmd.Args == "" {
@@ -56,7 +56,7 @@ func users(uc *usecase.UseCase, cmd *bot.Command) {
 			cmd.Reply("You can't delete yourself")
 			return
 		}
-		_, err := uc.DeleteUser(cmd.Context(), dto.GetUserInput{UserName: name})
+		_, err := uc.DeleteUser(cmd.Context(), dto.DeleteUserInput{UserName: name})
 		if err != nil {
 			if errors.Is(err, domain.ErrNotFound) {
 				cmd.Replyf("There are no user %s", name)

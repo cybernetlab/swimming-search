@@ -1,0 +1,195 @@
+[
+  {
+    "type": "centre",
+    "value": 13,
+    "name": "Aireborough",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 12,
+    "name": "Armley",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 11,
+    "name": "Fearnville",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 9,
+    "name": "Holt Park",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 6,
+    "name": "John Charles",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      9
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 8,
+    "name": "John Smeaton",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 5,
+    "name": "Kippax",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2,
+      9
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 10,
+    "name": "Kirkstall",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 14,
+    "name": "Middleton",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 7,
+    "name": "Morley",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 15,
+    "name": "Outdoor Activities (LSAC / Parks Tennis)",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      7,
+      8
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 4,
+    "name": "Pudsey",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 1,
+    "name": "Rothwell",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2,
+      9
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 3,
+    "name": "Scott Hall",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1,
+      2
+    ]
+  },
+  {
+    "type": "centre",
+    "value": 2,
+    "name": "Wetherby",
+    "region": {
+      "value": 1,
+      "name": "Active Leeds"
+    },
+    "courseGroupCategoryIds": [
+      1
+    ]
+  }
+]

@@ -23,33 +23,41 @@ type CourseGroup struct {
 }
 
 type Course struct {
-	ID           int `json:"courseId"`
-	Type         string
-	Name         string
-	Size         int
-	Schedule     CourseSchedule
+	ID                  int `json:"courseId"`
+	Type                string
+	Name                string
+	Size                int
+	Restrictions        []string
+	PaymentGatewayValid bool
+	Schedule            CourseSchedule
+	CourseGroup         CourseGroup
+	CourseGroupCategory CourseGroup
+
+	Centre struct {
+		ID   int `json:"id"`
+		Name string
+	}
+
+	PriceIndication struct {
+		Price string
+		Per   string
+	}
+
+	Level struct {
+		Description string
+	}
+
 	Availability struct {
-		StartDate CustomDate
-		Spaces    struct {
+		StartDate          CustomDate
+		EnablePortalSpaces int `json:"enable_portal_spaces"`
+
+		Spaces struct {
 			All      int
 			Occupied int
 			Reserved int
 			Free     int
 		}
-		EnablePortalSpaces int `json:"enable_portal_spaces"`
 	}
-	Restrictions    []string
-	PriceIndication struct {
-		Price string
-		Per   string
-	}
-	Level struct {
-		Description string
-	}
-	CourseGroup         CourseGroup
-	CourseGroupCategory CourseGroup
-	Centre              Centre
-	PaymentGatewayValid bool
 }
 
 type CustomDate struct {

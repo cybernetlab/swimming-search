@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cybernetlab/course-progress/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/dto"
 )
 
 func (u *UseCase) GetUser(ctx context.Context, input dto.GetUserInput) (dto.GetUserOutput, error) {

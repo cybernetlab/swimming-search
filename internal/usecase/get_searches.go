@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
 )
 
 func (u *UseCase) GetSearches(ctx context.Context) (dto.GetSearchesOutput, error) {

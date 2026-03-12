@@ -3,7 +3,7 @@ package bot
 import (
 	"context"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/domain"
 )
 
 type (

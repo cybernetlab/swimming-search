@@ -9,10 +9,10 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/cybernetlab/course-progress/internal/controller/bot"
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
-	"github.com/cybernetlab/course-progress/internal/usecase"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/usecase"
 	"github.com/rs/zerolog/log"
 )
 
@@ -41,7 +41,7 @@ func start(uc *usecase.UseCase, cmd *bot.Command) {
 			UserName:  user.Name,
 			ChatID:    chatID,
 		}
-		err = uc.StartSearch(ctx, dto.StartSearchInput{Search: search})
+		err = uc.StartSearch(ctx, dto.StartSearchInput{Search: &search})
 		if err != nil {
 			if errors.Is(err, domain.ErrEmptyCentreIDs) {
 				cmd.Reply(

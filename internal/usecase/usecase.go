@@ -4,8 +4,10 @@ import (
 	"context"
 	"slices"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/domain"
 )
+
+//go:generate mockery
 
 type Store interface {
 	GetUser(ctx context.Context, name string) (domain.User, error)

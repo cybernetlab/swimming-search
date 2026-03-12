@@ -26,10 +26,10 @@ func Init(c Config) {
 		log.Info().Msgf("Invalid log level %s specified", c.Level)
 	}
 
-	log.Logger = log.With().Caller().Logger()
+	log.Logger = log.With().Caller().Str("app", c.AppName).Str("vsn", c.AppVersion).Logger()
 
 	if c.PrettyConsole {
-		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: "15:04:05"})
+		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: "15:01:02"})
 	}
 
 	log.Info().Msg("Logger initialized")

@@ -1,0 +1,16 @@
+all: false
+dir: '{{.InterfaceDir}}/mocks'
+filename: mocks_test.go
+force-file-write: true
+formatter: goimports
+log-level: error
+# pkgname: mocks
+pkgname: '{{.SrcPackageName}}'
+recursive: false
+template: testify
+structname: '{{.Mock}}{{.InterfaceName}}'
+# structname: '{{.InterfaceName}}'
+packages:
+  github.com/cybernetlab/swimming-search/internal/usecase:
+    config:
+      all: True

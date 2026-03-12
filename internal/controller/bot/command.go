@@ -6,7 +6,7 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/domain"
 )
 
 type Command struct {
@@ -14,6 +14,15 @@ type Command struct {
 	Args string
 	bot  *Bot
 	ctx  context.Context
+}
+
+func NewCommand(ctx context.Context, bot *Bot, name string, args string) Command {
+	return Command{
+		Name: name,
+		Args: args,
+		bot:  bot,
+		ctx:  ctx,
+	}
 }
 
 func (c *Command) Context() context.Context {

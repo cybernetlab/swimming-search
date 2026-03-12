@@ -3,8 +3,8 @@ package usecase
 import (
 	"context"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
 )
 
 func (u *UseCase) GetSearch(ctx context.Context, input dto.GetSearchInput) (dto.GetSearchOutput, error) {

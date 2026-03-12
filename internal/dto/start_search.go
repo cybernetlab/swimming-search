@@ -1,7 +1,7 @@
 package dto
 
-import "github.com/cybernetlab/course-progress/internal/domain"
+import "github.com/cybernetlab/swimming-search/internal/domain"
 
 type StartSearchInput struct {
-	domain.Search
+	*domain.Search
 }

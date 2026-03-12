@@ -9,8 +9,8 @@ import (
 
 	"github.com/redis/go-redis/v9"
 
-	"github.com/cybernetlab/course-progress/internal/domain"
-	redislib "github.com/cybernetlab/course-progress/pkg/redis"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	redislib "github.com/cybernetlab/swimming-search/pkg/redis"
 )
 
 type Redis struct {

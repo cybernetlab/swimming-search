@@ -7,12 +7,12 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/kelseyhightower/envconfig"
 
-	"github.com/cybernetlab/course-progress/internal/adapter/booking"
-	"github.com/cybernetlab/course-progress/internal/controller/bot"
-	"github.com/cybernetlab/course-progress/pkg/httpserver"
-	"github.com/cybernetlab/course-progress/pkg/logger"
-	"github.com/cybernetlab/course-progress/pkg/otel"
-	"github.com/cybernetlab/course-progress/pkg/redis"
+	"github.com/cybernetlab/swimming-search/internal/adapter/booking"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot"
+	"github.com/cybernetlab/swimming-search/pkg/httpserver"
+	"github.com/cybernetlab/swimming-search/pkg/logger"
+	"github.com/cybernetlab/swimming-search/pkg/otel"
+	"github.com/cybernetlab/swimming-search/pkg/redis"
 )
 
 type App struct {

@@ -10,18 +10,18 @@ import (
 
 	"github.com/rs/zerolog/log"
 
-	"github.com/cybernetlab/course-progress/config"
-	"github.com/cybernetlab/course-progress/internal/adapter/booking"
-	"github.com/cybernetlab/course-progress/internal/adapter/redis"
-	"github.com/cybernetlab/course-progress/internal/controller/bot"
-	"github.com/cybernetlab/course-progress/internal/controller/bot/commands"
-	"github.com/cybernetlab/course-progress/internal/controller/http"
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
-	"github.com/cybernetlab/course-progress/internal/usecase"
-	"github.com/cybernetlab/course-progress/pkg/httpserver"
-	redislib "github.com/cybernetlab/course-progress/pkg/redis"
-	"github.com/cybernetlab/course-progress/pkg/router"
+	"github.com/cybernetlab/swimming-search/config"
+	"github.com/cybernetlab/swimming-search/internal/adapter/booking"
+	"github.com/cybernetlab/swimming-search/internal/adapter/redis"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot/commands"
+	"github.com/cybernetlab/swimming-search/internal/controller/http"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/usecase"
+	"github.com/cybernetlab/swimming-search/pkg/httpserver"
+	redislib "github.com/cybernetlab/swimming-search/pkg/redis"
+	"github.com/cybernetlab/swimming-search/pkg/router"
 )
 
 func Run(ctx context.Context, c config.Config) error {
@@ -107,7 +107,7 @@ func restartSearches(ctx context.Context, uc *usecase.UseCase) {
 			log.Info().Msgf("Restarting %d searches", l)
 		}
 		for _, search := range searches {
-			err = uc.StartSearch(bot.WithChatID(ctx, search.ChatID), dto.StartSearchInput{Search: search})
+			err = uc.StartSearch(bot.WithChatID(ctx, search.ChatID), dto.StartSearchInput{Search: &search})
 			if err != nil {
 				log.Warn().Msgf("Can't restart search job: %s", err.Error())
 			}

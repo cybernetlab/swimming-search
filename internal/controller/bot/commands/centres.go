@@ -6,10 +6,10 @@ import (
 	"regexp"
 	"strconv"
 
-	"github.com/cybernetlab/course-progress/internal/controller/bot"
-	"github.com/cybernetlab/course-progress/internal/domain"
-	"github.com/cybernetlab/course-progress/internal/dto"
-	"github.com/cybernetlab/course-progress/internal/usecase"
+	"github.com/cybernetlab/swimming-search/internal/controller/bot"
+	"github.com/cybernetlab/swimming-search/internal/domain"
+	"github.com/cybernetlab/swimming-search/internal/dto"
+	"github.com/cybernetlab/swimming-search/internal/usecase"
 )
 
 func centres(uc *usecase.UseCase, cmd *bot.Command) {
