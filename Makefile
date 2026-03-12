@@ -17,6 +17,7 @@ test-coverage:
 	go tool cover -html=${COVERAGE}/unit
 
 unit-test:
+	mkdir -p ${COVERAGE}
 	go test -cover -coverprofile=${COVERAGE}/unit.out ./internal/domain/... ./internal/usecase/...
 
 # integration-test:
