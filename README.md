@@ -1,6 +1,6 @@
-![Tests](https://github.com)
-![Coverage](https://img.shields.io)
-![Go Version](https://img.shields.io)
+![Tests](https://github.com/cybernetlab/swimming-search/actions/workflows/build.yml/badge.svg)
+![Coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/cybernetlab/b0d91574542f919600a3af6e1c74223a/raw/coverage.json)
+![Go Version](https://img.shields.io/github/go-mod/go-version/cybernetlab/swimming-search)
 
 Example telegram bot that can crawl some external HTTP API for swimming
 courses schedule and report if there is any courses that satisfies search
